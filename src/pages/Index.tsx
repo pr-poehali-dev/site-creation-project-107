@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Icon from "@/components/ui/icon";
+import SubwayGame from "@/components/SubwayGame";
 
 const PRODUCTS = [
   {
@@ -39,7 +40,7 @@ const PAYMENT_METHODS = [
   { icon: "Wallet", title: "Электронные кошельки", desc: "ЮMoney, QIWI и другие сервисы" },
 ];
 
-type Section = "shop" | "payment" | "contacts";
+type Section = "shop" | "payment" | "contacts" | "game";
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState<Section>("shop");
@@ -57,6 +58,7 @@ const Index = () => {
     { key: "shop", label: "Каталог" },
     { key: "payment", label: "Оплата" },
     { key: "contacts", label: "Контакты" },
+    { key: "game", label: "Игра" },
   ];
 
   return (
@@ -272,6 +274,20 @@ const Index = () => {
                 Задать вопрос
               </button>
             </div>
+          </section>
+        )}
+
+        {activeSection === "game" && (
+          <section className="max-w-4xl mx-auto px-6 py-16 animate-fade-in">
+            <div className="mb-10">
+              <p className="font-body text-xs tracking-[0.3em] uppercase text-muted-foreground mb-4">
+                Мини-игра
+              </p>
+              <h2 className="font-display text-5xl font-light">
+                Subway <span className="italic">Run</span>
+              </h2>
+            </div>
+            <SubwayGame />
           </section>
         )}
 
